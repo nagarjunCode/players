@@ -1,0 +1,51 @@
+<div>
+  <div [formGroup] = "formdata" >
+      <input placeholder="Id" [(ngModel)]='player.player_id' required formControlName='id'/>
+      <input placeholder="First Name" [(ngModel)]='player.first_name' formControlName='fname' />
+      <input placeholder="Last Name" [(ngModel)]='player.last_name' formControlName='lname' />
+      <input placeholder="Role" [(ngModel)]='player.role' formControlName='role' />
+      <input type="submit" value="Add New +" (click)='addNewPlayer()'  />
+  </div>
+  <div class="table-container">
+      <table class="w3-table w3-striped w3-hoverable">
+      <thead>
+        <tr>
+          <th>
+            Id
+          </th>
+          <th>
+            First Name
+          </th>
+          <th>
+            Last Name
+          </th>
+          <th>
+            Role
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let player of players;let i = index'>
+          <td>
+            {{player.player_id}}
+          </td>
+          <td>
+            {{player.first_name}}
+          </td>
+          <td>
+            {{player.last_name}}
+          </td>
+          <td>
+            {{player.role}}
+          </td>
+          <td>
+            <input type="button" (click)="deletePlayer(player.player_id,i)" value='Delete' />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div>
+  <button (click)='logoutUser()'>Logout</button>
+</div>
